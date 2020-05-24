@@ -1,1 +1,10 @@
-
+node{
+    stage('SCM-CHECKOUT'){
+      git 'https://github.com/jagdeepgupta813/addition'
+    }
+    stage('SCM-COMPILE'){
+      // get the home path 
+      def mvnHome = tool name: 'maven', type: 'maven'
+      sh "${mvnHome}/bin/mvn package"
+    }
+}
